@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aspire Connect</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+</head>
+<body>
+    <header>
+        <nav>
+            <section class="logo">
+                <h1 class="logoheading">Aspire Connect</h1>
+            </section>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Mentors</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#" id="login-btn">Login</a></li>
+                <li><a href="#" id="register-btn">Register</a></li>
+            </ul>
+        </nav>   
+    </header>
+
+    <section class="info">
+        <h2>Welcome to Aspire Connect</h2>
+        <p>Where Aspiration Meets Expertise.</p>
+    </section>
+
+    <section class="notices">
+        <h2>Notice Board</h2>
+        <ul id="notice-list">
+         <!-- Notices will be dynamically loaded here -->
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Aspire Connect. All rights reserved.</p>
+    </footer>
+
+<!-- Login Options Dropdown -->
+<div id="login-options" style="display: none;">
+  <button id="login-student">Login as Student</button>
+  <button id="login-mentor">Login as Mentor</button>
+</div>
+
+
+<!-- Login Modal -->
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 class="login-heading"> Login</h2>
+            <div id="studentLogin" class="login-form" data-role="student">
+                <form>
+                    <label for="studentEmail">Email:</label>
+                    <input type="email" id="studentEmail" name="studentEmail">
+                    <label for="studentPassword">Password:</label>
+                    <input type="password" id="studentPassword" name="studentPassword">
+                    <p><a href="#" id="forgot-password">Forgot Password?</a></p>
+                    <button type="submit">Login as Student</button>
+            <div class="register-link">
+                Don't have an account? <a href="#" id="register-link">Register here</a>
+            </div>
+        </form>
+    </div>
+    <div id="mentorLogin" class="login-form" data-role="mentor">
+        <form>
+            <label for="mentorEmail">Email:</label>
+            <input type="email" id="mentorEmail" name="mentorEmail">
+            <label for="mentorPassword">Password:</label>
+            <input type="password" id="mentorPassword" name="mentorPassword">
+            <p><a href="#" id="forgot-password">Forgot Password?</a></p>
+            <button type="submit">Login as Mentor</button>
+            <div class="register-link">
+                Don't have an account? <a href="#" id="register-link">Register here</a>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+
+    
+    <!-- Forgot Password Modal -->
+    <div class="modal" id="forgot-password-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Forgot Password</h2>
+            <form action="/forgot-password" method="post" id="forgot-password-form">
+                <div class="input-group">
+                    <label for="forgot-password-email">Email:</label>
+                    <input type="email" id="forgot-password-email" name="email" required>
+                </div>
+                <button type="submit">Send Reset Link</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Registration Modal -->
+    <div id="registration-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 class="login-heading">Registration</h2>
+            <form id="registration-form" action="/register" method="post">
+                <div class="input-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="input-group">
+                     <label for="userType">Register As: </label>
+                    <select id="userType" name="userType" required>
+                        <option value="" disabled selected>Select Role</option>
+                        <option value="mentor">Mentor</option>
+                        <option value="customer">Customer</option>
+                    </select>
+                </div>
+                <button type="submit">Register</button>
+                <div class="register-link">
+                    Already have an account? <a href="#" id="login-link">Login here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="home.js"></script>
+</body>
+</html>

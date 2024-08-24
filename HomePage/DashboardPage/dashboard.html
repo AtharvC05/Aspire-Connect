@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Student Dashboard</h1>
+        </div>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search...">
+        </div>
+    </header>
+    <div class="container">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="#" id="profile-link">Profile</a></li>
+                    <li><a href="#appointments">Appointments</a></li>
+                    <li><a href="#messages">Messages</a></li>
+                    <li><a href="#notifications">Notifications</a></li>
+                    <li><a href="#settings">Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <section id="upcoming-appointments">
+                <h2>Upcoming Appointments</h2>
+                <div class="calendar">
+                    <!-- Calendly Inline Embed -->
+                    <div class="calendly-inline-widget" data-url="https://calendly.com/atharvchemate369/mentor-booking" style="min-width:320px;height:630px;"></div>
+                    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
+                </div>
+            </section>
+            <section id="messages">
+                <h1>Recent Messages</h1>
+                <div class="message-list">
+                    <div class="message-item">
+                        <h3>Mentor</h3>
+                        <p>Don't forget to review your goals before our meeting.</p>
+                        <span class="timestamp">2 hours ago</span>
+                    </div>
+                </div>
+            </section>
+            <section id="notifications">
+                <h1>Notifications</h1>
+                <div class="notification-list">
+                    <div class="notification-item">
+                        <h3>New Feature Available</h3>
+                        <p>We’ve added new features to enhance your experience.</p>
+                        <span class="timestamp">1 day ago</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Aspire Connect. All rights reserved.</p>
+    </footer>
+    
+    <!-- Modal for Student Profile -->
+    <div class="modal" id="student-modal">
+        <div class="modal-content">
+            <button class="close-button" onclick="closeModal()">×</button>
+            <iframe id="student-frame" src="" width="100%" height="600" style="border: none;"></iframe>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

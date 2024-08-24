@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor Profile</title>
+    <link rel="stylesheet" href="mentor_profile.css">
+</head>
+<body>
+    <header>
+        <img id="profile-picture" src="mentor.png" alt="Mentor Profile Picture">
+        <h1 id="mentor-name">Mentor Name</h1>
+        <h2 id="professional-title">Professional Title</h2>
+        <button class="edit-profile-button" onclick="openEditProfile()">Edit Profile</button>
+    </header>
+
+    <section>
+        <h2>About</h2>
+        <p id="bio">Detailed biography, qualifications, and experience.</p>
+    </section>
+
+    <section>
+        <h2>Specializations</h2>
+        <ul id="specializations">
+            <li>Specialization 1</li>
+            <li>Specialization 2</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Availability</h2>
+        <p id="availability">Availability schedule</p>
+    </section>
+
+    <section>
+        <h2>Contact Information</h2>
+        <p id="contact-info">Contact or message options</p>
+    </section>
+
+    <div id="edit-profile-window" class="edit-profile-window">
+        <button class="close-button" onclick="closeEditProfile()">&times;</button>
+        <h2>Edit Profile</h2>
+        <form id="edit-profile-form">
+            <label for="mentor-name-input">Name:</label>
+            <input type="text" id="mentor-name-input" name="name" required>
+
+            <label for="professional-title-input">Professional Title:</label>
+            <input type="text" id="professional-title-input" name="professional-title">
+
+            <label for="bio-input">Biography:</label>
+            <textarea id="bio-input" name="bio" rows="4"></textarea>
+
+            <label for="specializations-input">Specializations:</label>
+            <textarea id="specializations-input" name="specializations" rows="4" required></textarea>
+
+            <label for="availability-input">Availability:</label>
+            <textarea id="availability-input" name="availability" rows="4"></textarea>
+
+            <label for="contact-info-input">Contact Information:</label>
+            <textarea id="contact-info-input" name="contact-info" rows="4"></textarea>
+
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+    <script src="mentor_profile.js"></script>   
+</body>
+</html>

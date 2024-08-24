@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <link rel="stylesheet" href="student_profile.css">
+    <style>
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            position: relative; /* Ensure the button can be positioned relative to the body */
+            min-height: 100vh; /* Make sure body is at least as tall as the viewport */
+            padding-bottom: 60px; /* Add padding to make space for the fixed button */
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #455a64;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #455a64;
+        }
+
+        header img {
+            width: 160px;
+            height: 160px;
+          margin-left:25%;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            margin-right: 20px;
+        }
+
+        header h1 {
+            font-size: 28px;
+            color: #f0f0f0;
+            margin: 10px;
+        }
+
+        header h2 {
+            font-size: 21px;
+            color: #f0f0f0;
+            margin: 10px;
+        }
+
+        /* Section Styles */
+        section {
+            background-color: #fff;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 80%;
+            border: 3px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        section h2 {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #333;
+            border-bottom: 3px solid #333;
+            padding-bottom: 5px;
+        }
+        
+        /* Button Styles */
+        .edit-profile-button {
+            display: block;
+            margin: 20px auto; /* Center align the button and add margin */
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #6d8e98;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        
+        .edit-profile-button:hover {
+            background-color: #455a64;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            section {
+                margin: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            section {
+                margin: 5px;
+            }
+        }
+
+        /* Edit Profile Window Styles */
+        .edit-profile-window {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 600px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            display: none; /* Hidden by default */
+            z-index: 1000;
+            max-height: 80vh; /* Limit height to 80% of the viewport height */
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+
+        .edit-profile-window h2 {
+            margin-bottom: 15px;
+            color: #455a64;
+        }
+
+        .edit-profile-window label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #333;
+        }
+
+        .edit-profile-window input[type="text"], 
+        .edit-profile-window input[type="email"],
+        .edit-profile-window input[type="tel"],
+        .edit-profile-window input[type="password"],
+        .edit-profile-window textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .edit-profile-window button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .edit-profile-window button:hover {
+            background-color: #2980b9;
+        }
+
+        .edit-profile-window .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .edit-profile-window .close-button:hover {
+            color: #006bb3;
+        }
+    </style>
+</head>
+<body>
+    <header role="banner">
+        <img id="profile-pic" src="student.png" alt="Student Profile Picture">
+        <div>
+            <h1 id="profile-name">Student Name</h1>
+            <h2 id="profile-major">Course or Major</h2>
+        </div>
+    </header>    
+    <section role="region" aria-labelledby="about-section">
+        <h2 id="about-section">About</h2>
+        <p id="about-text">Detailed biography, academic background, and achievements.</p>
+    </section>
+    <section role="region" aria-labelledby="skills-section">
+        <h2 id="skills-section">Skills and Interests</h2>
+        <ul id="skills-list">
+            <li>Skill 1</li>
+            <li>Skill 2</li>
+        </ul>
+    </section>
+    <section role="region" aria-labelledby="appointment-history-section">
+        <h2 id="appointment-history-section">Appointment History</h2>
+        <p id="appointment-history-text">Appointment history or schedule</p>
+    </section>
+    <section role="region" aria-labelledby="contact-info-section">
+        <h2 id="contact-info-section">Contact Information</h2>
+        <p id="contact-info-text">Contact or message options</p>
+    </section>
+    <!-- Edit Profile Button -->
+    <button class="edit-profile-button" onclick="openEditProfile()">Edit Profile</button>
+    
+    <!-- Edit Profile Window -->
+    <div class="edit-profile-window" id="edit-profile-window">
+        <button class="close-button" onclick="closeEditProfile()">×</button>
+        <h2>Edit Profile</h2>
+        <form id="edit-form">
+            <label for="student-name">Name:</label>
+            <input type="text" id="student-name" name="student-name" required>
+            
+            <label for="course-major">Course or Major:</label>
+            <input type="text" id="course-major" name="course-major">
+            
+            <label for="bio">Bio:</label>
+            <textarea id="bio" name="bio" rows="4"></textarea>
+            
+            <label for="skills">Skills and Interests:</label>
+            <textarea id="skills" name="skills" rows="4" required></textarea>
+            
+            <label for="appointment-history">Appointment History:</label>
+            <textarea id="appointment-history" name="appointment-history" rows="4"></textarea>
+            
+            <label for="contact-info">Contact Information:</label>
+            <textarea id="contact-info" name="contact-info" rows="4"></textarea>
+            
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+
+    <script sec="student_profile"></script>
+</body>
+</html>
